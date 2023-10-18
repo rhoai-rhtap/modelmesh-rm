@@ -1,1 +1,14 @@
+**/*.class
+*.jar
+*.md
+.DS_Store
+.cache
+.dockerignore
 .env
+.github
+.gitignore
+.idea
+.vscode
+default.etcd
+target
+temp
