@@ -2,7 +2,7 @@
 # Build arguments
 ARG SOURCE_CODE=.
 
-FROM registry.redhat.io/ubi8/go-toolset@sha256:4ec05fd5b355106cc0d990021a05b71bbfb9231e4f5bdc0c5316515edf6a1c96 AS stage
+FROM registry.redhat.io/ubi8/ubi-minimal@sha256:7583ca0ea52001562bd81a961da3f75222209e6192e4e413ee226cff97dbd48c AS stage
 
 # Define a build argument for the PNC list of built files
 ARG PNC_FILES_JSON
@@ -21,6 +21,7 @@ RUN echo "$PNC_FILES_JSON" | jq -r '.[] | select(test("\\.zip$"))' | \
 
 
 ###############################################################################
+#latest tag
 FROM registry.redhat.io/ubi8/openjdk-17-runtime@sha256:e2f33a6c60db4f4e70882a4a557eec5890997f8a1be7e3eb8971a0ff8a45a1a8 as runtime
 
 ## Build args to be used at this step
@@ -52,6 +53,7 @@ COPY --from=stage root/target/dockerhome/version /etc/modelmesh-version
 WORKDIR /opt/kserve/mmesh
 
 RUN microdnf install shadow-utils
+
 RUN useradd -c "Application User" -U -u ${USERID} -m app && \
     chown -R app:0 /home/app && \
     chmod g+w /etc/passwd && \
