@@ -35,6 +35,7 @@ LABEL com.redhat.component="odh-modelmesh-container" \
       io.openshift.expose-services="" \
       io.k8s.display-name="odh-modelmesh" \
       io.k8s.description="odh-modelmesh" \
+      version="vx.y" \
       com.redhat.license_terms="https://www.redhat.com/licenses/Red_Hat_Standard_EULA_20191108.pdf"
 
 USER root
@@ -58,7 +59,8 @@ RUN useradd -c "Application User" -U -u ${USERID} -m app && \
     mkdir -p log && \
     chown -R app:0 . && \
     chmod -R 771 . && chmod 775 *.sh *.py && \
-    echo "${CI_CONTAINER_VERSION}" > /opt/kserve/mmesh/build-version
+    echo "${version}" \
+    echo "${version}" > /opt/kserve/mmesh/build-version
 
 EXPOSE 8080
 
