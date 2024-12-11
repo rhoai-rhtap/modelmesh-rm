@@ -220,7 +220,7 @@ spec:
         value: $(tasks.prefetch-dependencies.results.CACHI2_ARTIFACT)
       - name: LABELS
         value:
-          - version=$(params.version)
+          - VERSION=$(params.version)
       runAfter:
       - prefetch-dependencies
       taskRef:
