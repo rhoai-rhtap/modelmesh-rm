@@ -104,9 +104,9 @@ spec:
       description: Path to a file with build arguments for buildah, see https://www.mankier.com/1/buildah-build#--build-arg-file
       name: build-args-file
       type: string
-    - name: version
+    - default: "v1.0"
+      name: version
       type: string
-      default: "v1.0"
     results:
     - description: ""
       name: IMAGE_URL
