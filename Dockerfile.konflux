@@ -8,7 +8,7 @@ FROM registry.redhat.io/ubi8/ubi-minimal@sha256:7583ca0ea52001562bd81a961da3f752
 ARG VERSION
 
 # Set the label with the version
-LABEL version="${VERSION}"
+#LABEL version="${VERSION}"
 
 # Echo the version to the build-version file
 RUN echo "${VERSION}"
