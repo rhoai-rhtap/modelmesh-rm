@@ -2,7 +2,7 @@
 # Build arguments
 ARG SOURCE_CODE=.
 
-FROM registry.redhat.io/ubi8/ubi-minimal@sha256:c12e67af6a7e15113d76bc72f10bef2045c026c71ec8b7124c8a075458188a83 AS stage
+FROM registry.redhat.io/ubi8/ubi-minimal@sha256:c38cc770631788157f8ea989df65ff30359c9f8af3246fef244b32caed9d5862 AS stage
 
 # Define a build argument for the PNC list of built files
 ARG PNC_FILES_JSON
@@ -22,7 +22,7 @@ RUN echo "$PNC_FILES_JSON" | jq -r '.[] | select(test("\\.zip$"))' | \
 
 ###############################################################################
 #latest tag
-FROM registry.redhat.io/ubi8/openjdk-17-runtime@sha256:592bf5e50453b6b89506df5b88b1ef51835914559b4e81355bcdcffe2e21dbaf as runtime
+FROM registry.redhat.io/ubi8/openjdk-17-runtime@sha256:44aa4ecdfa7a17513aff2fbd4368b87df1e3a9c576ec673ebaa11fa9afc3d79e as runtime
 
 ## Build args to be used at this step
 ARG USERID=2000
